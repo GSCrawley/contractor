@@ -1,7 +1,7 @@
 # import os
 from pymongo import MongoClient
-from bson.objectid import ObjectId
-from flask import Flask, render_template, request, redirect, url_for
+# from bson.objectid import ObjectId
+from flask import Flask, render_template
 
 # host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
 client = MongoClient()
@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 def guitars_index():
     """Show all guitars."""
-    return render_template('guitars_index.html', guitars=guitars)
+    return render_template('guitars_index.html', guitars=guitars.find())
 
 # @app.route('/guitars/new')
 # def guitars_new():
