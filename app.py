@@ -1,11 +1,11 @@
-import os
+# import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask import Flask, render_template, request, redirect, url_for
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
-client = MongoClient(host=f'{host}?retryWrites=false')
-db = client.get_default_database()
+# host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
+client = MongoClient()
+db = client.Contractor
 guitars = db.guitars
 # comments = db.comments
 app = Flask(__name__)
