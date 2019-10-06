@@ -1,0 +1,11 @@
+<!-- templates/playlists_index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Custom Guitars</h1>
+    {% for guitar in guitars %}
+        <div class='col-md-3'>
+        <h2><a href='/guitars/{{ guitar._id }}'>{{ guitar.title }}</a></h2>
+        <small>{{ guitar.description }}</small>
+    {% endfor %}
+{% endblock %}
