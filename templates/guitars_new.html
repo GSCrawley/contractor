@@ -2,25 +2,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/Guitars'>
-    <fieldset>
-        <legend>New Guitar</legend>
-        <!-- TITLE -->
-        <p>
-            <label for='Guitar-title'>Enter Guitar Brand Name</label><br>
-            <input id='Guitar-title' type='text' name='title' />
-        </p>
-
-        <!-- DESCRIPTION -->
-        <p>
-            <label for='description'>Description</label><br>
-            <input id='description' type='text' name='description' />
-        </p>
-    </fieldset>
-
-    <!-- BUTTON -->
-    <p>
-        <button type='submit'>Find Guitar</button>
-    </p>
-</form>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/Guitars/{{guitar._id}}'>
+            {% include 'partials/Guitars_form.html' %}
+            <!-- BUTTON -->
+            <div class='form-group'>
+                <button class='btn btn-primary' type='submit'>Save Guitar</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

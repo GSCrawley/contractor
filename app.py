@@ -18,14 +18,14 @@ def guitars_index():
 @app.route('/guitars/new')
 def guitars_new():
     """Create a custom guitar store."""
-    return render_template('guitars_new.html', guitar={}, title='Custom Guitars')
+    return render_template('guitars_new.html', guitar={}, title='Discount Guitars')
 
 @app.route('/guitars', methods=['POST'])
 def guitars_submit():
     Guitar = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'jpgs': request.form.get('jpgs').split()
+        # 'jpgs': request.form.get('jpgs').split()
     }
     Guitars.insert_one(Guitar)
-    return redirect(url_for('Guitars_index'))
+    return redirect(url_for('guitars_index'))

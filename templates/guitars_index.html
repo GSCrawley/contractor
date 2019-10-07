@@ -2,9 +2,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Custom Guitars</h1>
-
-<a href='/guitars/new'>New Guitars</a>
+<h1>Discount Guitars</h1>
+{% include 'partials/navbar.html' %}
+<a href='/guitars/new'>Enter A New Guitar</a>
 
 {% for guitar in guitars %}
     <h2>{{ guitar.title }}</h2>
