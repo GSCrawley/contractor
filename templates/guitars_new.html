@@ -1,0 +1,33 @@
+<!-- templates/Guitars_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/Guitars'>
+    <fieldset>
+        <legend>New Guitar</legend>
+        <!-- TITLE -->
+        <p>
+            <label for='Guitar-title'>Enter Guitar Brand Name</label><br>
+            <input id='Guitar-title' type='text' name='title' />
+        </p>
+
+        <!-- DESCRIPTION -->
+        <p>
+            <label for='description'>Description</label><br>
+            <input id='description' type='text' name='description' />
+        </p>
+
+        <!-- JPG LINKS -->
+        <p>
+            <label for='Guitar-videos'>Videos</label><br>
+            <p>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
+            <textarea id='Guitar-videos' name='videos' rows='10'></textarea>
+        </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Guitar</button>
+    </p>
+</form>
+{% endblock %}
