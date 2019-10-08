@@ -14,15 +14,7 @@
     <!-- Image URL -->
     <div class='form-group'>
         <label for='guitar-jpgs'>JPGS</label><br/>
-        <p class='text-muted'>Add jpgs in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
-        <textarea class='form-control' id='playlist-videos' name='videos' rows='10' />{{ "\n".join(playlist.videos) }}</textarea>
+        <p class='text-muted'>Add jpgs in the form of 'your_picture.jpg/embed/KEY'. Separate with a newline.</p>
+        <textarea class='form-control' id='guitar-jpgs' name='jpgs' rows='10' />{{ "\n".join(guitar.jpgs) }}</textarea>
     </div>
 </fieldset>
-
-
-<!-- BUTTON -->
-<p>
-    <button type='submit'>Find Guitar</button>
-</p>
-</form>
-{% endblock %}
