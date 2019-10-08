@@ -22,10 +22,10 @@ def guitars_new():
 
 @app.route('/guitars', methods=['POST'])
 def guitars_submit():
-    Guitar = {
+    guitar = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        # 'jpgs': request.form.get('jpgs').split()
+        'jpgs': request.form.get('jpgs').split()
     }
-    Guitars.insert_one(Guitar)
+    guitars.insert_one(guitar)
     return redirect(url_for('guitars_index'))
