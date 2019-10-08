@@ -5,16 +5,21 @@
         <label for='Guitar-title'>Guitar Make/Model: </label><br>
         <input id='Guitar-title' type='text' name='title' />
     </p>
-
+    <!-- TYPE (Electric/Acoustic) -->
+    p>
+        <label for='Guitar-type'>Type of Guitar (electric or acoustic?): </label><br>
+        <input id='Guitar-type' type='text' name='description' />
+    </p>
     <!-- DESCRIPTION -->
     <p>
-        <label for='description'>Price of Guitar: </label><br>
-        <input id='description' type='text' name='description' />
+        <label for='Guitar-price'>Price of Guitar: </label><br>
+        <input id='Guitar-price' type='text' name='description' />
     </p>
+    
     <!-- Image URL -->
     <div class='form-group'>
-        <label for='guitar-jpgs'>JPGS</label><br/>
+        <label for='jpgs'>JPGS</label><br/>
         <p class='text-muted'>Add URL to jpgs. Separate with a new line.</p>
-        <textarea class='form-control' id='guitar-jpgs' name='jpgs' rows='10' />{{ "\n".join(guitar.jpgs) }}</textarea>
+        <input id="jpgs" type="text" name="jpgs" value="{{ guitar.jpgs }}"/>
     </div>
 </fieldset>

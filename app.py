@@ -7,7 +7,7 @@ host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
 client = MongoClient()
 db = client.Contractor
 guitars = db.guitars
-# comments = db.comments
+checkout = db.checkout
 app = Flask(__name__)
 
 @app.route('/')
@@ -25,7 +25,8 @@ def guitars_submit():
     guitar = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'jpgs': request.form.get('jpgs').split()
+        'jpgs': request.form.get('jpgs'),
+        'type_of_guitar': request.form.get('types')
     }
     guitars.insert_one(guitar)
     return redirect(url_for('guitars_index'))
@@ -35,3 +36,24 @@ def guitars_edit(guitar_id):
     """Show the edit form for a guitar."""
     guitar = guitars.find_one({'_id': ObjectId(guitar_id)})
     return render_template('guitars_edit.html', guitar=guitar, title='Edit guitar')
+
+@app.route('/guitars/<guitar_id>/delete', methods=['POST'])
+def guitars_delete(guitar_id):
+    """Delete one guitar."""
+    guitars.delete_one({'_id': ObjectId(guitar_id)})
+    return redirect(url_for('guitars_index'))
+
+@app.route('/acoustic_guitars/show')
+def acoustic_guitars():
+    """Display Acoustic Guitars"""
+    return  render_template('acoustic_guitars.html')
+
+@app.route('/electric_guitars/show')
+ def electric_guitars():
+     """Display Electric Guitars"""
+     return render_template('electric_guitars.html')
+
+@app.route('/checkout_cart')
+def checkout_cart():
+    """Checkout items to cart"""
+    return render_template('checkout_cart.html')
