@@ -1,0 +1,17 @@
+<!-- templates/guitars_edit.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/guitars/{{guitar._id}}'>
+            <input type='hidden' name='_method' value='PUT'/>
+            {% include 'partials/guitars_form.html' %}
+            <!-- BUTTON -->
+            <div class='form-group'>
+                <button class='btn btn-primary' type='submit'>Save guitar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

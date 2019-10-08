@@ -29,3 +29,9 @@ def guitars_submit():
     }
     guitars.insert_one(guitar)
     return redirect(url_for('guitars_index'))
+
+@app.route('/guitars/<guitar_id>/edit')
+def guitars_edit(guitar_id):
+    """Show the edit form for a guitar."""
+    guitar = guitars.find_one({'_id': ObjectId(guitar_id)})
+    return render_template('guitars_edit.html', guitar=guitar, title='Edit guitar')
