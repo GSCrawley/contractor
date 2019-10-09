@@ -1,24 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<title> Acoustic Guitars </title>
 <p>
-<title> Gibson SG Standard '61 Maestro Vibrola - Vintage Cherry </title>
-    <ht> Solidbody Electric Guitar with Mahogany Body and Neck, Rosewood Fretboard,
-        2 Humbucking Pickups, and Vibrola Tailpiece - Vintage Cherry </h1>
+<title> Electric Guitars </title>
+</p>
+<p>
+<h1> Gibson SG Standard '61 Maestro Vibrola - Vintage Cherry - $1100 </h1>
+<h2> Solidbody Electric Guitar with Mahogany Body and Neck, Rosewood Fretboard,
+        2 Humbucking Pickups, and Vibrola Tailpiece - Vintage Cherry </h2>
 <img src = https://media.sweetwater.com/api/i/f-webp__q-82__ha-902157bc5494490e__hmac-85ee1fd357633919c0aa59efc6327e96bc782deb/images/guitars/SG61VVENH/124890022/124890022-body-large.jpg />
 </p>
 <p>
-<title> Fender Sandblasted Stratocaster  </title>
+<h1> Fender Sandblasted Stratocaster - $950 </h1>
 <h2> Solidbody Electric Guitar with Ash Body, Maple Neck, Rosewood Fingerboard,
     and 3 Single-coil Pickups - 3-tone Sunburst </h2>
 <img src = https://media.sweetwater.com/api/i/f-webp__q-82__ha-f921840fa3e808ae__hmac-da21509cfa27a1be5b2aa33187566dab48519bbb/images/guitars/StratSBR3TSB/US19083589/US19083589-body-large.jpg />
 </p>
 <p>
-<title> Epiphone Les Paul Standard Plustop Pro - Heritage Cherry Sunburst </title>
-<h3> Solidbody Electric Guitar with Mahogany Body, Flame Maple Veneer Top,
-    Mahogany Neck, Pau Ferro Fingerboard, and 2 Humbucking Pickups - Heritage Cherry </h3>
-    <img src = https://media.sweetwater.com/api/i/f-webp__q-82__ha-f921840fa3e808ae__hmac-da21509cfa27a1be5b2aa33187566dab48519bbb/images/guitars/StratSBR3TSB/US19083589/US19083589-body-large.jpg />
+<h1> Epiphone Les Paul Standard Plustop Pro - Heritage Cherry Sunburst - $875 </h1>
+<h2> Solidbody Electric Guitar with Mahogany Body, Flame Maple Veneer Top,
+    Mahogany Neck, Pau Ferro Fingerboard, and 2 Humbucking Pickups - Heritage Cherry </h1>
+<img src = https://media.sweetwater.com/api/i/f-webp__q-82__ha-820e9c0ba04473a9__hmac-d39b493672a44871c0b44f3845440f83cb55f618/images/guitars/ENLPHSNH/19011519411/19011519411-body-large.jpg />
 </p>
 
+<form action="/checkout_cart" method="POST">
+    <button class='btn btn-primary' type='submit'>Add To Cart</button>
+    <input type = "hidden" name="make_model" value="Epiphone Les Paul">
+    <input type = "hidden" name="type" value="Electric">
+    <input type = "hidden" name="cost" value="875">
+</form>
 {% endblock %}
