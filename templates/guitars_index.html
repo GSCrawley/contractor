@@ -9,9 +9,10 @@
 <a href='/guitars/new'>Enter A New Guitar to Sell</a>
 
 {% for guitar in guitars %}
-    <h2>{{ guitar.title }}</h2>
+    <h1>{{ guitar.title }}</h1>
     <small>{{ guitar.description }}</small>
-    <h3><img src = "{{ guitar.jpgs }}"></h3>
+    <h2> {{ guitar.price }} </h2>
+    <img src = "{{ guitar.jpgs }}">
     <p><form method='POST' action='/guitars/{{ guitar._id }}/edit'>
         <input type='hidden' name='_method' value='EDIT'>
         <button class='btn btn-primary' type='submit'>Edit</button>

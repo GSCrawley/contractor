@@ -2,6 +2,7 @@ import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask import Flask, render_template, request, redirect, url_for
+
 # from flask_session import Session
 # import json
 
@@ -9,6 +10,7 @@ host = os.environ.get('MONGODB_URI', 'mongodb://127.0.0.1:27017/Contractor')
 client = MongoClient(host=host)
 db = client.get_default_database()
 guitars = db.guitars
+comments = db.comments
 # cart_items = db.cart_items
 app = Flask(__name__)
 
@@ -31,8 +33,8 @@ def guitars_submit():
     guitar = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'jpgs': request.form.get('jpgs'),
-        'type_of_guitar': request.form.get('types')
+        'price': request.form.get('price'),
+        'jpgs': request.form.get('jpgs')
     }
     guitars.insert_one(guitar)
     return redirect(url_for('guitars_index'))
@@ -49,8 +51,8 @@ def save_edit(guitar_id):
     guitar = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'jpgs': request.form.get('jpgs'),
-        'type_of_guitar': request.form.get('types')
+        'price': request.form.get('price'),
+        'jpgs': request.form.get('jpgs')
     }
     guitars.update_one({'_id': ObjectId(guitar_id)},{"$set":guitar})
     return redirect(url_for('guitars_index'))
