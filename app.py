@@ -73,37 +73,5 @@ def electric_guitars():
      """Display Electric Guitars"""
      return render_template('electric_guitars.html')
 
-######### COMMENT ROUTES ##########
-
-@app.route('/guitars/comments', methods=['POST'])
-def comments_new():
-    """Submit a new comment."""
-    comment = {
-        'title': request.form.get('title'),
-        'content': request.form.get('content'),
-        'guitar_id': ObjectId(request.form.get('guitar_id'))
-    }
-    print(comment)
-    comment_id = comments.insert_one(comment).inserted_id
-    return redirect(url_for('guitars_show', guitar_id=request.form.get('guitar_id')))
-
-@app.route('/guitars/comments/<comment_id>', methods=['POST'])
-def comments_delete(comment_id):
-    """Action to delete a comment."""
-    comment = comments.find_one({'_id': ObjectId(comment_id)})
-    comments.delete_one({'_id': ObjectId(comment_id)})
-    return redirect(url_for('guitars_show', guitar_id=comment.get('guitar_id')))
-
 if __name__ == '__main__':
   app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
-
-# @app.route('/checkout_cart', methods =['POST'])
-# def checkout_cart():
-#     new_cart_item = {
-#     "make_model": request.form.get("make_model"),
-#     "type": request.form.get("type"),
-#     "cost": request.form.get("cost")
-#     }
-#     cart_items.insert_one(new_cart_item)
-#     """Checkout items to cart"""
-#     return render_template('checkout_cart.html', cart_items=cart_items.find())

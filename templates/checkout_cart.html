@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-{% for cart_item in cart_items %}
-{{cart_item.make_model}}
-{{cart_item.cost}}
-{% endfor %}
-{% endblock %}
