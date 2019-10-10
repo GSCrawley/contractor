@@ -4,10 +4,10 @@ from bson.objectid import ObjectId
 from flask import Flask, render_template, request, redirect, url_for
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
-client = MongoClient()
-db = client.Contractor
+client = MongoClient(host=host)
+db = client.get_default_database()
 guitars = db.guitars
-cart_items = db.cart_items
+# cart_items = db.cart_items
 app = Flask(__name__)
 
 @app.route('/')
@@ -69,13 +69,13 @@ def electric_guitars():
      """Display Electric Guitars"""
      return render_template('electric_guitars.html')
 
-@app.route('/checkout_cart', methods =['POST'])
-def checkout_cart():
-    new_cart_item = {
-    "make_model": request.form.get("make_model"),
-    "type": request.form.get("type"),
-    "cost": request.form.get("cost")
-    }
-    cart_items.insert_one(new_cart_item)
-    """Checkout items to cart"""
-    return render_template('checkout_cart.html', cart_items=cart_items.find())
+# @app.route('/checkout_cart', methods =['POST'])
+# def checkout_cart():
+#     new_cart_item = {
+#     "make_model": request.form.get("make_model"),
+#     "type": request.form.get("type"),
+#     "cost": request.form.get("cost")
+#     }
+#     cart_items.insert_one(new_cart_item)
+#     """Checkout items to cart"""
+#     return render_template('checkout_cart.html', cart_items=cart_items.find())
