@@ -17,7 +17,7 @@ app = Flask(__name__)
 @app.route('/')
 def guitars_index():
     """Show all guitars."""
-    return render_template('guitars_index.html', guitars=guitars.find())
+    return render_template('guitars_index.html', guitar=guitar.find())
 
 @app.route('/about')
 def about():
