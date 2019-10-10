@@ -31,11 +31,23 @@ def guitars_submit():
     guitars.insert_one(guitar)
     return redirect(url_for('guitars_index'))
 
-@app.route('/guitars/<guitar_id>/edit')
+@app.route('/guitars/<guitar_id>/edit', methods=['POST'])
 def guitars_edit(guitar_id):
     """Show the edit form for a guitar."""
     guitar = guitars.find_one({'_id': ObjectId(guitar_id)})
     return render_template('guitars_edit.html', guitar=guitar, title='Edit guitar')
+
+@app.route('/guitars/<guitar_id>/save_edit', methods=['POST'])
+def save_edit(guitar_id):
+    """Update New Guitar"""
+    guitar = {
+        'title': request.form.get('title'),
+        'description': request.form.get('description'),
+        'jpgs': request.form.get('jpgs'),
+        'type_of_guitar': request.form.get('types')
+    }
+    guitars.update_one({'_id': ObjectId(guitar_id)},{"$set":guitar})
+    return redirect(url_for('guitars_index'))
 
 @app.route('/guitars/<guitar_id>/delete', methods=['POST'])
 def guitars_delete(guitar_id):

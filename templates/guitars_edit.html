@@ -4,7 +4,7 @@
 {% block content %}
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
-        <form method='POST' action='/guitars/{{guitar._id}}'>
+        <form method='POST' action='/guitars/{{guitar._id}}/save_edit'>
             <input type='hidden' name='_method' value='PUT'/>
             {% include 'partials/guitars_form.html' %}
             <!-- BUTTON -->
