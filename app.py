@@ -2,10 +2,10 @@ import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask import Flask, render_template, request, redirect, url_for
-from flask_session import Session
-import json
+# from flask_session import Session
+# import json
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
+host = os.environ.get('MONGODB_URI', 'mongodb://127.0.0.1:27017/Contractor')
 client = MongoClient(host=host)
 db = client.get_default_database()
 guitars = db.guitars
