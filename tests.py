@@ -30,9 +30,16 @@ class contractorTests(TestCase):
 
     def test_edit(self):
         """Test the edit page."""
-        result = self.client.get('/guitars/edit')
+        result = self.client.get('/guitars/<guitar_id>/edit', methods=['POST'])
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'Edit Guitar', result.data)
+
+    def test_delete(self):
+        """Test the delete page."""
+        result = self.client.get('/guitars/<guitar_id>/delete')
+        self.assertEqual(result.status, '200 OK')
+        self.assertIn(b'Delete Guitar', result.data)
+
 
 
 if __name__ == '__main__':
