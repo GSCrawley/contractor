@@ -1,12 +1,10 @@
-if __name__ == '__main__':
-  app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
-
 import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask import Flask, render_template, request, redirect, url_for
 
-client = MongoClient(host=f'{host}?retryWrites=false')
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
+client = MongoClient(host=host)
 db = client.get_default_database()
 guitars = db.guitars
 # cart_items = db.cart_items
@@ -70,6 +68,9 @@ def acoustic_guitars():
 def electric_guitars():
      """Display Electric Guitars"""
      return render_template('electric_guitars.html')
+
+if __name__ == '__main__':
+  app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
 
 # @app.route('/checkout_cart', methods =['POST'])
 # def checkout_cart():
