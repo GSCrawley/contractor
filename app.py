@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for
 # import json
 
 host = os.environ.get('MONGODB_URI', 'mongodb://127.0.0.1:27017/Contractor')
-client = MongoClient(host=host)
+client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 guitars = db.guitars
 comments = db.comments
