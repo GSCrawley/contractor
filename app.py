@@ -15,6 +15,10 @@ def guitars_index():
     """Show all guitars."""
     return render_template('guitars_index.html', guitars=guitars.find())
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/guitars/new')
 def guitars_new():
     """Create a custom guitar store."""
