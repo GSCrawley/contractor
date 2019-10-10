@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, redirect, url_for
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
 client = MongoClient(host=host)
 db = client.get_default_database()
-guitars = db.guitars
+guitar = db.guitars
 # cart_items = db.cart_items
 app = Flask(__name__)
 
