@@ -43,21 +43,13 @@ class contractorTests(TestCase):
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'New Guitar', result.data)
 
-    def test_edit(self):
-        """Test the edit page"""
-        result = self.client.get('/guitars/edit')
-        self.assertEqual(result.status, '200 OK')
-        self.assertIn(b'Edit Guitar', result.data)
-
-
-    # @mock.patch('pymongo.collection.Collection.update_one')
-    # def test_edit_guitar(self, mock_find):
-    #    """Test editing a single guitar entry."""
-    #    mock_find.return_value = sample_guitar
-    #    result = self.client.get(f'/guitars/{sample_guitar_id}')
-    #    self.assertEqual(result.status, '200 OK')
-    #    self.assertIn(b'Edit Guitar', result.data)
-
+    @mock.patch('pymongo.collection.Collection.update_one')
+    def test_edit_guitar(self, mock_update):
+       """Test editing a single guitar entry."""
+       mock_update.return_value = sample_guitar
+       result = self.client.get(f'/guitars/{sample_guitar_id}')
+       self.assertEqual(result.status, '200 OK')
+       self.assertIn(b'Edit Guitar', result.data)
 
     @mock.patch('pymongo.collection.Collection.delete_one')
     def test_delete_guitar(self, mock_delete):
@@ -65,7 +57,6 @@ class contractorTests(TestCase):
        result = self.client.post(f'/guitars/{sample_guitar_id}/delete', data=form_data)
        self.assertEqual(result.status, '302 FOUND')
        mock_delete.assert_called_with({'_id': sample_guitar_id})
-
 
 if __name__ == '__main__':
     unittest_main()
